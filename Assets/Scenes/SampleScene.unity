@@ -1616,7 +1616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &498533567
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4133,7 +4133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393270980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058cba836c1846c3aa1c5fd2e28aea77, type: 3}
   m_Name: 
@@ -6142,6 +6142,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1112255308493107008, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
+        type: 3}
+      propertyPath: currentWeapon
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4911907383175986272, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
+        type: 3}
+      propertyPath: shootTimeDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030630605226207745, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7624739507351523919, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
         type: 3}
       propertyPath: gameOverCanvas
@@ -6207,87 +6222,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7805784964124139051, guid: b94f25cb36c9d4d4bb4627ce316d1bd8, type: 3}
+    - target: {fileID: 9139104096100278650, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b94f25cb36c9d4d4bb4627ce316d1bd8, type: 3}
---- !u!20 &7805784964408330719 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7805784964112787951, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 7805784964408330718}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7805784964408330720 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7805784964113902537, guid: b94f25cb36c9d4d4bb4627ce316d1bd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 7805784964408330718}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7805784964408330721
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7805784964408330720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 7805784964408330719}
-  movementSettings:
-    ForwardSpeed: 8
-    BackwardSpeed: 4
-    StrafeSpeed: 4
-    RunMultiplier: 2
-    RunKey: 304
-    JumpForce: 30
-    SlopeCurveModifier:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: -90
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 90
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    CurrentTargetSpeed: 8
-  mouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
-    clampVerticalRotation: 1
-    MinimumX: -90
-    MaximumX: 90
-    smooth: 0
-    smoothTime: 5
-    lockCursor: 1
-  advancedSettings:
-    groundCheckDistance: 0.01
-    stickToGroundHelperDistance: 0.5
-    slowDownRate: 20
-    airControl: 0
-    shellOffset: 0

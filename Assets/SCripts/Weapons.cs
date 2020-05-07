@@ -10,6 +10,8 @@ public class Weapons : MonoBehaviour
     [SerializeField] float damage = 20f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] float shootTimeDelay = 1f;
+    float fireTime = 0f;
 
     //CASHE
     [SerializeField] Ammo ammoSlot;
@@ -17,8 +19,10 @@ public class Weapons : MonoBehaviour
     //ADDED TO THE WEAPON SINCE ATTACHED TO PLAYER
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        float currentTime = Time.time;
+        if (Input.GetButtonDown("Fire1") && (currentTime > fireTime))
         {
+            fireTime = currentTime + shootTimeDelay;
             Shoot();
         }
         //FOR ROSEMARIE TO PLAY.

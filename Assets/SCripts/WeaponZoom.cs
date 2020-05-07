@@ -19,7 +19,7 @@ public class WeaponZoom : MonoBehaviour
     private void Start()
     {
         fpCamera = Camera.main;
-        fpsControl = GetComponent<RigidbodyFirstPersonController>();
+        fpsControl = GetComponentInParent<RigidbodyFirstPersonController>();
     }
     //USER INPUT > CLICK DOWN = ZOOM > RELEASE THE BUTTON = UNZOOM
     private void Update()
