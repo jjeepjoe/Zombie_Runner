@@ -13,8 +13,7 @@ public class EnemyAttack : MonoBehaviour
     //
     private void Start()
     {
-        playerHealth = FindObjectOfType<PlayerHealth>();
-        
+        playerHealth = FindObjectOfType<PlayerHealth>();        
     }
     //ANIMATOR EVENT
     public void AttackHitEvent()
