@@ -10,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
     //public method to reduce points by damage
     public void TakeDamage(float damage)
     {
+        //THIS WILL CALL FOR THIS METHOD ON THE GAMEOBJECT CONTAINER.
+        BroadcastMessage("OnDamageTaken");
+
         hitPoints -= damage;
         Debug.Log("HIT " + hitPoints);
         if(hitPoints <= 0)

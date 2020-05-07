@@ -5,25 +5,25 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     //CONFIG PARAMS
-    PlayerHealth target;
+    PlayerHealth targetPlayer;
     [SerializeField] float damage = 40f;
 
     //CONFIG COMPONENTS
     private void Start()
     {
-<<<<<<< HEAD
-        playerHealth = FindObjectOfType<PlayerHealth>();        
-=======
-        target = FindObjectOfType<PlayerHealth>();
-        
->>>>>>> ba8ef8b2b38840c7c34e1f252ad372839376851b
+        targetPlayer = FindObjectOfType<PlayerHealth>();
     }
     //ANIMATOR EVENT
     public void AttackHitEvent()
     {
-        if (target == null) { return; }
+        if (targetPlayer == null) { return; }
         Debug.Log("PUNCH CHOMP PUNCH");
-        //
-        target.TakeDamage(damage);
+        //USING 1 COMPONENT TO DO TWO THINGS
+        targetPlayer.TakeDamage(damage);
+    }
+    //TESTING BROADCAST MESSAGE
+    public void OnDamageTaken()
+    {
+        Debug.Log("UGG, ME EAT YOU NOW!");
     }
 }
