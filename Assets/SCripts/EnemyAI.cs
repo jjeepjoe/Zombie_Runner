@@ -7,32 +7,34 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     //CONFIG PARAMS
-    Transform targetTransform;
+    Transform target;
     [SerializeField] float chaseRange = 10f;
     float distanceToTarget = Mathf.Infinity; //STARTING DISTANCE RETURN.
+    [SerializeField] float turnSpeed = 5f;
 
     //CASHE COMPONENT/ OBJECT STATE
     NavMeshAgent navMeshAgent;
     Animator myAnimator;
     bool isProvoked = false;
 
-    //MAKE CONNECTIONS
+    //MAKE COMPONENTE CONNECTIONS
     private void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
-        targetTransform = GameObject.Find("Player").transform;
+        target = GameObject.Find("Player").transform;
     }
-    //LIVE ACTIONS
+    //LIVING ZOMBIE ACTIONS
     private void Update()
     {
         //DETECTION RANGE (IT, ME), IN FLOAT RETURN.
-        distanceToTarget = Vector3.Distance(targetTransform.position,
+        distanceToTarget = Vector3.Distance(target.position,
                                     transform.position);
         //THE FLAG isProvoked CAN BE TRIGGERED BY OTHER ACTIONS/ AND RANGE.
         if (isProvoked)
         {
             ProvokedActions();
+            FaceTarget();
         }
         else if (distanceToTarget <= chaseRange)
         {
@@ -62,12 +64,23 @@ public class EnemyAI : MonoBehaviour
     {
         myAnimator.SetBool("Attack", false);
         myAnimator.SetTrigger("Move");
-        navMeshAgent.SetDestination(targetTransform.position);
+        navMeshAgent.SetDestination(target.position);
     }
     //VISUAL RANGE IN EDITOR VIEW/ LINE FOR LINE MATCH.
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, chaseRange);
+    }
+    //WHEN IN ATTACK RANGE WE NEED TO FACE CORRECTLY.
+    private void FaceTarget()
+    {
+        //NORMALIZED REMOVES SOME OF THE MATH WE DO NOT NEED FOR OUR CALCULATION
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(
+                                    direction.x, 0, direction.z));
+        //SLERP =  A QUATERNION METHOD OF ROTATION CHANGE
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation,
+                                    Time.deltaTime * turnSpeed);
     }
 }
