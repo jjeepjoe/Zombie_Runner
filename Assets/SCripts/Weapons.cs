@@ -18,6 +18,11 @@ public class Weapons : MonoBehaviour
         {
             Shoot();
         }
+        //FOR ROSEMARIE TO PLAY.
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
     //
     private void Shoot()

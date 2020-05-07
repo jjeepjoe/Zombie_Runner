@@ -12,7 +12,6 @@ public class EnemyAttack : MonoBehaviour
     private void Start()
     {
         targetPlayer = FindObjectOfType<PlayerHealth>();
-        
     }
     //ANIMATOR EVENT
     public void AttackHitEvent()
