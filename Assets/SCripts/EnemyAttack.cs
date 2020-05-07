@@ -5,15 +5,18 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     //CONFIG PARAMS
-    [SerializeField] Transform target;
+    PlayerHealth target;
     [SerializeField] float damage = 40f;
 
-    PlayerHealth playerHealth;
-
-    //
+    //CONFIG COMPONENTS
     private void Start()
     {
+<<<<<<< HEAD
         playerHealth = FindObjectOfType<PlayerHealth>();        
+=======
+        target = FindObjectOfType<PlayerHealth>();
+        
+>>>>>>> ba8ef8b2b38840c7c34e1f252ad372839376851b
     }
     //ANIMATOR EVENT
     public void AttackHitEvent()
@@ -21,14 +24,6 @@ public class EnemyAttack : MonoBehaviour
         if (target == null) { return; }
         Debug.Log("PUNCH CHOMP PUNCH");
         //
-        if (playerHealth != null) 
-        {
-            playerHealth.TakeDamage(damage);
-        }
-        else
-        {
-            Debug.Log("NULL MOfo");
-        }
-
+        target.TakeDamage(damage);
     }
 }

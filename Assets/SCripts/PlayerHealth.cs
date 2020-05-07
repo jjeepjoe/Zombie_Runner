@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
     //CONFIG PARAMS
     [SerializeField] float playerHitPoints = 100f;
 
-    //
+    //TAKE CARE OF BUISNESS.
     public void TakeDamage(float damage)
     {
         playerHitPoints -= damage;
@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
         if (playerHitPoints <= 0)
         {
             Debug.Log("DEAD DEAD DEAD");
+            GetComponent<DeathHandler>().HandleDeath();
         }
     }
 }
