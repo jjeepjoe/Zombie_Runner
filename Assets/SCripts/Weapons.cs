@@ -11,7 +11,10 @@ public class Weapons : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
 
-    // Update is called once per frame
+    //CASHE
+    [SerializeField] Ammo ammoSlot;
+
+    //ADDED TO THE WEAPON SINCE ATTACHED TO PLAYER
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -27,8 +30,16 @@ public class Weapons : MonoBehaviour
     //
     private void Shoot()
     {
-        PlayMuzzleFlash();
-        ProcessRaycast();
+        if(ammoSlot.GetCurrentAmmo() > 0)
+        {
+            PlayMuzzleFlash();
+            ammoSlot.ReduceCurrentAmmo();
+            ProcessRaycast();
+        }
+        else
+        {
+            Debug.Log("CLICK CLICK ALL OUT!");
+        }        
     }
     //
     private void PlayMuzzleFlash()
