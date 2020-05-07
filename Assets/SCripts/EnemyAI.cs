@@ -41,6 +41,11 @@ public class EnemyAI : MonoBehaviour
             isProvoked = true;            
         }
     }
+    //ZOMBIE GOT SHOT
+    public void OnDamageTaken()
+    {
+        isProvoked = true;
+    }
     //PROVOKED ACTIONS.
     private void ProvokedActions()
     {
