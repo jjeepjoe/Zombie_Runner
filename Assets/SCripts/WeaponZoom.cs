@@ -1,20 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class WeaponZoom : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] float zoomInFOV = 30f;
     [SerializeField] float zoomOutFOV= 60f;
+    [SerializeField] float zoomInSensitivity = .5f;
+    [SerializeField] float zoomOutSensitivity = 2f;
     bool isZoomed = false;
     //CASHE
     Camera fpCamera;
+    RigidbodyFirstPersonController fpsControl;
 
     //COMPONENT CONECTION
     private void Start()
     {
         fpCamera = Camera.main;
+        fpsControl = GetComponent<RigidbodyFirstPersonController>();
     }
     //USER INPUT > CLICK DOWN = ZOOM > RELEASE THE BUTTON = UNZOOM
     private void Update()
@@ -43,10 +48,14 @@ public class WeaponZoom : MonoBehaviour
     private void ZoomIn()
     {
         fpCamera.fieldOfView = zoomInFOV;
+        fpsControl.mouseLook.XSensitivity = zoomInSensitivity;
+        fpsControl.mouseLook.YSensitivity = zoomInSensitivity;
     }
     //
     private void ZoomOut()
     {
         fpCamera.fieldOfView = zoomOutFOV;
+        fpsControl.mouseLook.XSensitivity = zoomOutSensitivity;
+        fpsControl.mouseLook.YSensitivity = zoomOutSensitivity;
     }
 }
