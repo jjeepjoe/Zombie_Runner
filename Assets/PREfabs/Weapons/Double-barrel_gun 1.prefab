@@ -184,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 1652954791862484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.131, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 1, z: 2.5}
   m_Children:
   - {fileID: 4719304394238986}
   - {fileID: 4824459603947356}
@@ -211,6 +211,7 @@ MonoBehaviour:
   hitEffect: {fileID: 5064396193350759526, guid: 170b4c28a3091034c9449dd223dfc8e6,
     type: 3}
   shootTimeDelay: 2
+  ammoType: 1
   ammoSlot: {fileID: 0}
 --- !u!1001 &1023636121201130875
 PrefabInstance:
@@ -227,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 7029229611494481677, guid: f71d40ca3787d514392f16d7abb241f4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.752
+      value: 2.26
       objectReference: {fileID: 0}
     - target: {fileID: 7029229611494481677, guid: f71d40ca3787d514392f16d7abb241f4,
         type: 3}

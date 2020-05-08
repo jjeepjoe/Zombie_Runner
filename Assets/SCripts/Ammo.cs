@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class Ammo : MonoBehaviour
 {
-    //CONFIG PARAMs
-    [SerializeField] int ammoAmount = 10;
+    //CONFIG PARAMS >DATA HELPER CLASS IN THE INSPECTOR.
+    [SerializeField] AmmoSlot[] ammoSlots;
 
-    //
-    public int GetCurrentAmmo()
+    //INTERNAL HELPER DATA CLASS > 
+    [System.Serializable]
+    private class AmmoSlot
     {
-        return ammoAmount;
+        public AmmoType ammoType;
+        public int ammoAmount;
     }
-    //
-    public void ReduceCurrentAmmo()
+    //CAN SHOOT?
+    public int GetCurrentAmmo(AmmoType ammoType)
     {
-        ammoAmount -= 1;
+        return GetAmmoSlot(ammoType).ammoAmount;
     }
-    //
-    public void SetAmmoAmount(int amount)
+    //SHOOTING
+    public void ReduceCurrentAmmo(AmmoType ammoType)
     {
-        ammoAmount += amount;
+        GetAmmoSlot(ammoType).ammoAmount -= 1;
+    }
+    //PICKUPS
+    public void IncreaseAmmoAmount(AmmoType ammoType, int amount)
+    {
+        GetAmmoSlot(ammoType).ammoAmount += amount;
+    }
+    //HELPER METHOD > FIND THE SLOT TO MATCH THE WEAPON.
+    private AmmoSlot GetAmmoSlot(AmmoType ammoType)
+    {
+        foreach (AmmoSlot slot in ammoSlots)
+        {
+            if(slot.ammoType == ammoType)
+            {
+                return slot;
+            }
+        }
+        return null;
     }
 }

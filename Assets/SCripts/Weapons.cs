@@ -11,6 +11,7 @@ public class Weapons : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
     [SerializeField] float shootTimeDelay = 1f;
+    [SerializeField] AmmoType ammoType;
     float fireTime = 0f;
 
     //CASHE
@@ -34,16 +35,16 @@ public class Weapons : MonoBehaviour
     //
     private void Shoot()
     {
-        if(ammoSlot.GetCurrentAmmo() > 0)
+        if (ammoSlot.GetCurrentAmmo(ammoType) > 0)
         {
             PlayMuzzleFlash();
-            ammoSlot.ReduceCurrentAmmo();
             ProcessRaycast();
+            ammoSlot.ReduceCurrentAmmo(ammoType);
         }
         else
         {
             Debug.Log("CLICK CLICK ALL OUT!");
-        }        
+        }
     }
     //
     private void PlayMuzzleFlash()

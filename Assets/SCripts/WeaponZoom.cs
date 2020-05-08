@@ -58,4 +58,9 @@ public class WeaponZoom : MonoBehaviour
         fpsControl.mouseLook.XSensitivity = zoomOutSensitivity;
         fpsControl.mouseLook.YSensitivity = zoomOutSensitivity;
     }
+    //WHEN DISABLED THIS IS CALLED FOR CLEAN UP
+    private void OnDisable()
+    {
+        ZoomOut();   
+    }
 }

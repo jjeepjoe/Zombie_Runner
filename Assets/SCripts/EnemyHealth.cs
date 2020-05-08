@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("HIT " + hitPoints);
         if(hitPoints <= 0)
         {
-            FindObjectOfType<EnemySpawner>().SetAlive(); //Rosemarie game
+            //FindObjectOfType<EnemySpawner>().SetAlive(); //Rosemarie game
             Destroy(gameObject);
         }
     }
