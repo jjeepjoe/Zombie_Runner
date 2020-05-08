@@ -15,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     //CASHE COMPONENT/ OBJECT STATE
     NavMeshAgent navMeshAgent;
     Animator myAnimator;
+    EnemyHealth myHealth;
     bool isProvoked = false;
 
     //MAKE COMPONENTE CONNECTIONS
@@ -22,11 +23,18 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
+        myHealth = GetComponent<EnemyHealth>();
         target = GameObject.Find("Player").transform;
     }
     //LIVING ZOMBIE ACTIONS
     private void Update()
     {
+        //USED TO STOP THE DEAD
+        if (myHealth.IsDead())
+        {
+            enabled = false;
+            navMeshAgent.enabled = false;
+        }
         //DETECTION RANGE (IT, ME), IN FLOAT RETURN.
         distanceToTarget = Vector3.Distance(target.position,
                                     transform.position);

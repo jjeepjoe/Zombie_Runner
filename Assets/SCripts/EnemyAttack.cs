@@ -16,8 +16,8 @@ public class EnemyAttack : MonoBehaviour
     //ANIMATOR EVENT
     public void AttackHitEvent()
     {
-        if (targetPlayer == null) { return; }
         Debug.Log("PUNCH CHOMP PUNCH");
+        if (targetPlayer == null) { return; }        
         //USING 1 COMPONENT TO DO TWO THINGS
         targetPlayer.TakeDamage(damage);
     }

@@ -6,6 +6,12 @@ public class EnemyHealth : MonoBehaviour
 {
     //CONFIG PARAMS
     [SerializeField] float hitPoints = 100f;
+    bool isDead = false;
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
 
     //public method to reduce points by damage
     public void TakeDamage(float damage)
@@ -18,7 +24,11 @@ public class EnemyHealth : MonoBehaviour
         if(hitPoints <= 0)
         {
             //FindObjectOfType<EnemySpawner>().SetAlive(); //Rosemarie game
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            //UPDATED TO NEW ANIMATION PLUS KEEP BODY AROUND.
+            if(isDead) { return; }
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("Death");
         }
     }
 }
