@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
         BroadcastMessage("OnDamageTaken");
 
         hitPoints -= damage;
-        Debug.Log("HIT " + hitPoints);
+        Debug.Log("[EnemyHealth.cs]:: I HIT THE ZOMBIE " + hitPoints);
         if(hitPoints <= 0)
         {
             //FindObjectOfType<EnemySpawner>().SetAlive(); //Rosemarie game

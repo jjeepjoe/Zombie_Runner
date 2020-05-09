@@ -11,10 +11,10 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         playerHitPoints -= damage;
-        Debug.Log("ZOMBIE HIT ME " + playerHitPoints);
+        Debug.Log("[PlayerHealth.TakeDamage()]:: ZOMBIE HIT ME " + playerHitPoints);
         if (playerHitPoints <= 0)
         {
-            Debug.Log("DEAD DEAD DEAD");
+            Debug.Log("[PlayerHealth]::DEAD DEAD DEAD");
             GetComponent<DeathHandler>().HandleDeath();
         }
     }

@@ -16,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
     //ANIMATOR EVENT
     public void AttackHitEvent()
     {
-        Debug.Log("PUNCH CHOMP PUNCH");
+        Debug.Log("[EnemyAttack.AttackHitEvent()]:: PUNCH CHOMP PUNCH");
         if (targetPlayer == null) { return; }        
         //USING 1 COMPONENT TO DO TWO THINGS
         targetPlayer.TakeDamage(damage);
@@ -24,6 +24,6 @@ public class EnemyAttack : MonoBehaviour
     //TESTING BROADCAST MESSAGE
     public void OnDamageTaken()
     {
-        Debug.Log("UGG, ME EAT YOU NOW!");
+        Debug.Log("[EnemyAttack.OnDamageTaken()]:: UGG, ME EAT YOU NOW!");
     }
 }

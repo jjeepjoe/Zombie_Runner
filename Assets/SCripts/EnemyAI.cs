@@ -66,10 +66,10 @@ public class EnemyAI : MonoBehaviour
             AtttackTarget();
         }        
     }
-    //
+    //THIS STARTS THE ANIMATION > WE JUST NEED TO INCLUDE THE EVENT TO THE IMPORTED CLIP.
     private void AtttackTarget()
     {
-        Debug.Log("CHOMP CHOMP CHEW");
+        Debug.Log("[EnemyAI.AttackTarget()]:: CHOMP CHOMP CHEW");
         myAnimator.SetBool("Attack", true);
     }
     //FOLLOW THE PLAYER/ CAN LOOSE INTEREST ONCE OUT OF RANGE.
