@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
@@ -16,10 +18,12 @@ public class Weapons : MonoBehaviour
 
     //CASHE
     [SerializeField] Ammo ammoSlot;
+    [SerializeField] TextMeshProUGUI ammoText;
 
     //ADDED TO THE WEAPON SINCE ATTACHED TO PLAYER
     void Update()
     {
+        DisplayAmmo();
         float currentTime = Time.time;
         if (Input.GetButtonDown("Fire1") && (currentTime > fireTime))
         {
@@ -31,6 +35,11 @@ public class Weapons : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+    //WILL GET THE CURRENT AMMO USED AND DISPLAY THE AMOUNT.
+    private void DisplayAmmo()
+    {
+        ammoText.text = "Ammo: " + ammoSlot.GetCurrentAmmo(ammoType).ToString();
     }
     //
     private void Shoot()

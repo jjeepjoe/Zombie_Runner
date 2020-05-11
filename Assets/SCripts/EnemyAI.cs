@@ -24,7 +24,8 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         myAnimator = GetComponent<Animator>();
         myHealth = GetComponent<EnemyHealth>();
-        target = GameObject.Find("Player").transform;
+        //MATCHING UP THE PLAYER ONLY SINCE IT IS ONLY ON THE PLAYER
+        target = FindObjectOfType<PlayerHealth>().transform;
     }
     //LIVING ZOMBIE ACTIONS
     private void Update()
@@ -39,17 +40,17 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(target.position,
                                     transform.position);
         //THE FLAG isProvoked CAN BE TRIGGERED BY OTHER ACTIONS/ AND RANGE.
-        if (isProvoked)
+        if (isProvoked && navMeshAgent.enabled)
         {
             ProvokedActions();
             FaceTarget();
         }
         else if (distanceToTarget <= chaseRange)
         {
-            isProvoked = true;            
+            isProvoked = true;
         }
     }
-    //ZOMBIE GOT SHOT
+    //ZOMBIE GOT SHOT AND IS PISSED OFF.
     public void OnDamageTaken()
     {
         isProvoked = true;
@@ -69,12 +70,11 @@ public class EnemyAI : MonoBehaviour
     //THIS STARTS THE ANIMATION > WE JUST NEED TO INCLUDE THE EVENT TO THE IMPORTED CLIP.
     private void AtttackTarget()
     {
-        Debug.Log("[EnemyAI.AttackTarget()]:: CHOMP CHOMP CHEW");
         myAnimator.SetBool("Attack", true);
     }
     //FOLLOW THE PLAYER/ CAN LOOSE INTEREST ONCE OUT OF RANGE.
     private void ChaseTarget()
-    {
+    {        
         myAnimator.SetBool("Attack", false);
         myAnimator.SetTrigger("Move");
         navMeshAgent.SetDestination(target.position);
